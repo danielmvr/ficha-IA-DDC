@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ficha de Personagem - DDC</title>
+  <style>
+    /* Estilos CSS para a ficha de personagem */
+    /* Adicione seus estilos personalizados aqui */
+  </style>
+  <script>
+    // Script JavaScript para manipulação interativa da ficha de personagem
+    // Adicione suas funções e lógica personalizada aqui
+  </script>
+</head>
+<body>
+  <h1>Ficha de Personagem</h1>
+  
+  <form id="character-sheet">
+    <h2>Dados Básicos</h2>
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="race">Raça:</label>
+    <input type="text" id="race" name="race" required>
+    
+    <label for="class">Classe:</label>
+    <input type="text" id="class" name="class" required>
+    
+    <!-- Adicione mais campos para outros atributos e informações relevantes -->
+    
+    <h2>Atributos</h2>
+    <label for="attribute1">Atributo 1:</label>
+    <input type="number" id="attribute1" name="attribute1" min="1" max="20" required>
+    
+    <label for="attribute2">Atributo 2:</label>
+    <input type="number" id="attribute2" name="attribute2" min="1" max="20" required>
+    
+    <!-- Adicione mais campos para outros atributos -->
+    
+    <h2>Habilidades</h2>
+    <label for="skill1">Habilidade 1:</label>
+    <input type="checkbox" id="skill1" name="skill1">
+    
+    <label for="skill2">Habilidade 2:</label>
+    <input type="checkbox" id="skill2" name="skill2">
+    
+    <!-- Adicione mais campos para outras habilidades -->
+    
+    <h2>Inventário</h2>
+    <textarea id="inventory" name="inventory"></textarea>
+    
+    <!-- Adicione mais campos para o inventário -->
+    
+    <button type="submit">Salvar</button>
+  </form>
+  
+  <script>
+    // Exemplo de lógica JavaScript para manipular os dados da ficha de personagem
+    const form = document.getElementById('character-sheet');
+    
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Obter os valores dos campos
+      const name = document.getElementById('name').value;
+      const race = document.getElementById('race').value;
+      const characterClass = document.getElementById('class').value;
+      const attribute1 = document.getElementById('attribute1').value;
+      const attribute2 = document.getElementById('attribute2').value;
+      
+      // Realizar qualquer manipulação de dados necessária aqui
+      
+      // Exibir os dados no console (pode ser modificado para enviar para um servidor, etc.)
+      console.log('Nome:', name);
+      console.log('Raça:', race);
+      console.log('Classe:', characterClass);
+      console.log('Atributo 1:', attribute1);
+      console.log('Atributo 2:', attribute2);
+    });
+  </script>
+</body>
+</html>
