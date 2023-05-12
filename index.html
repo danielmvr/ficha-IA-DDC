@@ -4,67 +4,22 @@
   <title>Ficha de Personagem - DCC RPG</title>
   <style>
     /* Estilos CSS para a ficha de personagem */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
-    }
-    
-    #character-sheet {
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin: 50px auto;
-      max-width: 600px;
-      padding: 20px;
-    }
-    
-    h1, h2, h3 {
-      color: #333;
-      font-weight: bold;
-      margin-top: 0;
-    }
-    
-    label {
-      display: inline-block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    
-    input[type="text"], input[type="number"], textarea {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-      font-size: 16px;
-      margin-bottom: 15px;
-      padding: 8px;
-      width: 100%;
-    }
-    
-    input[type="checkbox"] {
-      margin-right: 5px;
-    }
-    
-    button[type="submit"] {
-      background-color: #333;
-      border: none;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-      padding: 10px 20px;
-    }
-    
-    button[type="submit"]:hover {
-      background-color: #555;
-    }
+    /* ... Estilos do seu tema visual aqui ... */
   </style>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
   <script>
-    // Script JavaScript para manipulação interativa da ficha de personagem
-    // Adicione suas funções e lógica personalizada aqui
+    // Inicialize o Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGJpa37JqIhBCQdw9csOPD879-BjKyAX4",
+      authDomain: "ficha-dcc.firebaseapp.com",
+      projectId: "ficha-dcc",
+      storageBucket: "ficha-dcc.appspot.com",
+      messagingSenderId: "749377139770",
+      appId: "1:749377139770:web:3ca5967bf0b7192ab93103"
+    };
+
+    firebase.initializeApp(firebaseConfig);
   </script>
 </head>
 <body>
@@ -91,7 +46,7 @@
     
     <h2>Habilidades</h2>
     <label for="luck">Sorte:</label>
-        <input type="number" id="luck" name="luck" min="1" max="18" required>
+    <input type="number" id="luck" name="luck" min="1" max="18" required>
     
     <label for="intelligence">Inteligência:</label>
     <input type="number" id="intelligence" name="intelligence" min="1" max="18" required>
@@ -107,12 +62,12 @@
   </form>
   
   <script>
-    // Exemplo de lógica JavaScript para manipular os dados da ficha de personagem
+    // Exemplo de lógica JavaScript para enviar dados para o Firebase
     const form = document.getElementById('character-sheet');
     
     form.addEventListener('submit', function(event) {
       event.preventDefault();
-      
+
       // Obter os valores dos campos
       const name = document.getElementById('name').value;
       const occupation = document.getElementById('occupation').value;
@@ -120,18 +75,27 @@
       const agility = document.getElementById('agility').value;
       const luck = document.getElementById('luck').value;
       const intelligence = document.getElementById('intelligence').value;
+      const inventory = document.getElementById('inventory').value;
       
-      // Realizar qualquer manipulação de dados necessária aqui
-      
-      // Exibir os dados no console (pode ser modificado para enviar para um servidor, etc.)
-      console.log('Nome:', name);
-      console.log('Ocupação:', occupation);
-      console.log('Força:', strength);
-      console.log('Agilidade:', agility);
-      console.log('Sorte:', luck);
-      console.log('Inteligência:', intelligence);
+      // Crie um objeto com os dados do formulário
+     const formData = {
+        name: name,
+        occupation: occupation,
+        strength: strength,
+        agility: agility,
+        luck: luck,
+        intelligence: intelligence,
+        inventory: inventory
+      };
+
+      // Envie os dados para o Firebase
+      const database = firebase.database();
+      const charactersRef = database.ref('personagens'); // 'personagens' é o nome da coleção no banco de dados
+      charactersRef.push(formData);
+
+      // Limpe o formulário após o envio
+      form.reset();
     });
   </script>
 </body>
 </html>
-
