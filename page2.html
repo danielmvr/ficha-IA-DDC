@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Fichas - DCC RPG</title>
+  <style>
+    /* Estilos CSS para a página de lista de fichas */
+    /* ... Estilos do seu tema visual aqui ... */
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Voltar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1 style="text-align: center;">Lista de Fichas</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ocupação</th>
+        <th>Força</th>
+        <th>Agilidade</th>
+        <th>Sorte</th>
+        <th>Inteligência</th>
+        <th>Inventário</th>
+      </tr>
+    </thead>
+    <tbody id="character-list"></tbody>
+  </table>
+
+  <script>
+    // Inicialize o Firebase
+    const firebaseConfig = {
+      apiKey: "sua-api-key",
+      authDomain: "seu-auth-domain",
+      projectId: "seu-project-id",
+      storageBucket: "seu-storage-bucket",
+      messagingSenderId: "seu-sender-id",
+      appId: "seu-app-id"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    // Obtenha as referências do banco de dados
+    const database = firebase.database();
+    const charactersRef = database.ref('personagens');
+
+    // Escute as alterações no banco de dados
+    charactersRef.on('value', (snapshot) => {
+      const characterList = document.getElementById('character-list');
+      characterList.innerHTML = '';
+
+      snapshot.forEach((childSnapshot) => {
+        const character = childSnapshot.val();
+        const row = document.createElement('tr');
+
+        const nameCell = document.createElement('td');
+        nameCell.textContent = character.name;
+        row.appendChild(nameCell);
+
+        const occupationCell = document.createElement('td');
+        occupationCell.textContent = character.occupation;
+        row.appendChild(occupationCell);
+
+        const strengthCell = document.createElement('td');
+        strengthCell.textContent = character.strength;
+        row.appendChild(strengthCell);
+
+        const agilityCell = document.createElement('td');
+        agilityCell.textContent = character.agility;
+        row.appendChild(agilityCell);
+
+        const luckCell = document.createElement('td');
+        luckCell.textContent = character.luck;
+        row.appendChild(luckCell);
+
+        const intelligenceCell = document.createElement('td');
+        intelligenceCell.textContent = character.intelligence;
+        row.appendChild(intelligenceCell);
+
+        const inventoryCell = document.createElement('td');
+        inventoryCell.textContent = character.inventory;
+        row.appendChild(inventoryCell);
+
+        characterList.appendChild(row);
+      });
+    });
+  </script>
+</body>
+</html>
