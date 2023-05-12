@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ficha de Personagem - DDC</title>
+  <title>Ficha de Personagem - DCC RPG</title>
   <style>
     /* Estilos CSS para a ficha de personagem */
     body {
-      font-family: 'Old Standard TT', serif;
-      background-color: #f3ecd8;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
       margin: 0;
       padding: 0;
     }
     
     #character-sheet {
-      background-color: #ffffff;
-      border: 2px solid #af9164;
+      background-color: white;
+      border: 1px solid #ccc;
       border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       margin: 50px auto;
       max-width: 600px;
       padding: 20px;
     }
     
     h1, h2, h3 {
-      color: #5c4723;
+      color: #333;
       font-weight: bold;
       margin-top: 0;
-      text-align: center;
     }
     
     label {
       display: inline-block;
       font-weight: bold;
-      color: #5c4723;
       margin-bottom: 5px;
     }
     
     input[type="text"], input[type="number"], textarea {
-      border: 1px solid #af9164;
+      border: 1px solid #ccc;
       border-radius: 5px;
       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
       font-size: 16px;
       margin-bottom: 15px;
       padding: 8px;
       width: 100%;
-      color: #5c4723;
     }
     
     input[type="checkbox"] {
@@ -51,56 +48,53 @@
     }
     
     button[type="submit"] {
-      background-color: #5c4723;
+      background-color: #333;
       border: none;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      color: #ffffff;
+      color: white;
       cursor: pointer;
       font-size: 16px;
       padding: 10px 20px;
     }
     
     button[type="submit"]:hover {
-      background-color: #7e6145;
+      background-color: #555;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
   <script>
     // Script JavaScript para manipulação interativa da ficha de personagem
     // Adicione suas funções e lógica personalizada aqui
   </script>
 </head>
 <body>
-  <h1>Ficha de Personagem</h1>
+  <h1 style="text-align: center;">Ficha de Personagem - DCC RPG</h1>
   
   <form id="character-sheet">
     <h2>Dados Básicos</h2>
     <label for="name">Nome:</label>
     <input type="text" id="name" name="name" required>
     
-    <label for="race">Raça:</label>
-    <input type="text" id="race" name="race" required>
-    
-    <label for="class">Classe:</label>
-    <input type="text" id="class" name="class" required>
+    <label for="occupation">Ocupação:</label>
+    <input type="text" id="occupation" name="occupation" required>
     
     <!-- Adicione mais campos para outros atributos e informações relevantes -->
     
     <h2>Atributos</h2>
-    <label for="attribute1">Atributo 1:</label>
-    <input type="number" id="attribute1" name="attribute1" min="1" max="20" required>
-        <label for="attribute2">Atributo 2:</label>
-    <input type="number" id="attribute2" name="attribute2" min="1" max="20" required>
+    <label for="strength">Força:</label>
+    <input type="number" id="strength" name="strength" min="1" max="18" required>
+    
+    <label for="agility">Agilidade:</label>
+    <input type="number" id="agility" name="agility" min="1" max="18" required>
     
     <!-- Adicione mais campos para outros atributos -->
     
     <h2>Habilidades</h2>
-    <label for="skill1">Habilidade 1:</label>
-    <input type="checkbox" id="skill1" name="skill1">
+    <label for="luck">Sorte:</label>
+        <input type="number" id="luck" name="luck" min="1" max="18" required>
     
-    <label for="skill2">Habilidade 2:</label>
-    <input type="checkbox" id="skill2" name="skill2">
+    <label for="intelligence">Inteligência:</label>
+    <input type="number" id="intelligence" name="intelligence" min="1" max="18" required>
     
     <!-- Adicione mais campos para outras habilidades -->
     
@@ -121,19 +115,21 @@
       
       // Obter os valores dos campos
       const name = document.getElementById('name').value;
-      const race = document.getElementById('race').value;
-      const characterClass = document.getElementById('class').value;
-      const attribute1 = document.getElementById('attribute1').value;
-      const attribute2 = document.getElementById('attribute2').value;
+      const occupation = document.getElementById('occupation').value;
+      const strength = document.getElementById('strength').value;
+      const agility = document.getElementById('agility').value;
+      const luck = document.getElementById('luck').value;
+      const intelligence = document.getElementById('intelligence').value;
       
       // Realizar qualquer manipulação de dados necessária aqui
       
       // Exibir os dados no console (pode ser modificado para enviar para um servidor, etc.)
       console.log('Nome:', name);
-      console.log('Raça:', race);
-      console.log('Classe:', characterClass);
-      console.log('Atributo 1:', attribute1);
-      console.log('Atributo 2:', attribute2);
+      console.log('Ocupação:', occupation);
+      console.log('Força:', strength);
+      console.log('Agilidade:', agility);
+      console.log('Sorte:', luck);
+      console.log('Inteligência:', intelligence);
     });
   </script>
 </body>
