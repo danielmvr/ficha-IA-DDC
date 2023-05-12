@@ -4,8 +4,68 @@
   <title>Ficha de Personagem - DDC</title>
   <style>
     /* Estilos CSS para a ficha de personagem */
-    /* Adicione seus estilos personalizados aqui */
+    body {
+      font-family: 'Old Standard TT', serif;
+      background-color: #f3ecd8;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #character-sheet {
+      background-color: #ffffff;
+      border: 2px solid #af9164;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      margin: 50px auto;
+      max-width: 600px;
+      padding: 20px;
+    }
+    
+    h1, h2, h3 {
+      color: #5c4723;
+      font-weight: bold;
+      margin-top: 0;
+      text-align: center;
+    }
+    
+    label {
+      display: inline-block;
+      font-weight: bold;
+      color: #5c4723;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"], input[type="number"], textarea {
+      border: 1px solid #af9164;
+      border-radius: 5px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      margin-bottom: 15px;
+      padding: 8px;
+      width: 100%;
+      color: #5c4723;
+    }
+    
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    
+    button[type="submit"] {
+      background-color: #5c4723;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #7e6145;
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
   <script>
     // Script JavaScript para manipulação interativa da ficha de personagem
     // Adicione suas funções e lógica personalizada aqui
@@ -30,8 +90,7 @@
     <h2>Atributos</h2>
     <label for="attribute1">Atributo 1:</label>
     <input type="number" id="attribute1" name="attribute1" min="1" max="20" required>
-    
-    <label for="attribute2">Atributo 2:</label>
+        <label for="attribute2">Atributo 2:</label>
     <input type="number" id="attribute2" name="attribute2" min="1" max="20" required>
     
     <!-- Adicione mais campos para outros atributos -->
@@ -79,3 +138,4 @@
   </script>
 </body>
 </html>
+
